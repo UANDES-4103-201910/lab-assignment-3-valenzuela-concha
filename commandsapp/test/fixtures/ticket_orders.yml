@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: 
+  ticket: 
+  total: 1
+
+two:
+  client: 
+  ticket: 
+  total: 1
