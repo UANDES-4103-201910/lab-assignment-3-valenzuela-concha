@@ -34,7 +34,7 @@ tt9 = TicketType.create(event_id: e3.id, price: 35000, category: 'Pacifico')
 
 to1 = TicketOrder.create(user_id: u1.id, ticket_type_id: tt5.id, total: tt5.price)
 #TicketOrder.find(1).ticket_type_id << TicketType.find(5).id
-#TicketOrder.find(1).ticket_type_id << TicketType.find(9).id
+#TicketOrder.find(1).ticket_type_º	id << TicketType.find(9).id
 aux1 = TicketType.find(5).price + TicketType.find(9).price + TicketType.find(1).price
 TicketOrder.update(1, total: aux1)
 
