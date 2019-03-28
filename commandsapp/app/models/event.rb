@@ -1,28 +1,24 @@
 class Event < ApplicationRecord
-	has_one :EventVenue
-	belong_to :TicketType
+	has_one :event_venue
+	#belongs_to :ticket_type
 
 	def self.most_tickets_sold
-		idttotal = []
-		
+		total = []
 		x = TicketOrder.select(:ticket_type_id)
-		x.each{|z| idttotal << z[:ticket_type_id]}
+		x.each{|z| total << [TicketType.find(z[:ticket_type_id])[:event_id], z[:ticket_type_id]]}
+		cantidad = Hash.new(0)
+		total.each { |x| cantidad[x[0]] += 1 }
 
-		counts = Hash.new(0)
-		idttotal.each { |x| counts[x] += 1 }
-		a = [] 
-		#b = Event.where(id: TicketType.find(w[0])(:event_id)
-		#counts.each{|w| a = b}
-		y = Event.select(:id)
+		return Event.find(cantidad.key(cantidad.values.max))
+	end
 
-		def last_attendance
-		idvenue = self[:id]
-		x = Event.where(event_venue_id: idvenue).select(:id, :start_date).order(:start_date).last
+	def self.highest_revenue
+		total = []
+		x = TicketOrder.select(:ticket_type_id)
+		x.each{|z| total << [TicketType.find(z[:ticket_type_id])[:event_id], TicketType.find(z[:ticket_type_id])[:price]]}
+		suma = Hash.new(0)
+		total.each { |x| suma[x[0]] += x[1]}
 
-		y = TicketType.where(event_id: x[:id]).select(:id)
-		idtt = []
-		y.each{|z| idtt << z[:id]}
-
-		return TicketOrder.where({ticket_type_id: idtt}).count
+		return Event.find(suma.key(suma.values.max))
 	end
 end

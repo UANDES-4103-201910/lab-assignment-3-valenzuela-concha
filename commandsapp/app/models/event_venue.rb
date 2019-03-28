@@ -1,5 +1,5 @@
 class EventVenue < ApplicationRecord
-	belongs_to :Event
+	#belongs_to :event
 
 	def last_attendance
 		idvenue = self[:id]

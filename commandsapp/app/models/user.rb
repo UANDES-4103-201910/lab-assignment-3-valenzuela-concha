@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	belongs_to :TicketOrder
+	#belongs_to :ticket_order
 	
 	def most_expensive_ticket_bought
 		iduser = self[:id]

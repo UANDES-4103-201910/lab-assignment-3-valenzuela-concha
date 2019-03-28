@@ -16,9 +16,9 @@ ev1 = EventVenue.create(name: 'Movistar Arena', address: 'Parque Ohiggins', capa
 ev2 = EventVenue.create(name: 'Estadio nacional', address: 'marathon', capacity: 2000)
 ev3 = EventVenue.create(name: 'Teatro Caupolican', address: 'caupolican', capacity: 500)
 
-e1 = Event.create(name: 'Paloma Mami', description: 'The best of both worlds', start_date: Date.new(2019,2,3), event_venue_id: u1.id)
-e2 = Event.create(name: 'Ayowoki', description: 'The return', start_date: Date.new(2019,4,3), event_venue_id: u2.id)
-e3 = Event.create(name: 'Foo Fighters', description: 'Wow', start_date: Date.new(2020,2,3), event_venue_id: u3.id)
+e1 = Event.create(name: 'Paloma Mami', description: 'The best of both worlds', start_date: Date.new(2019,2,3), event_venue_id: ev1.id)
+e2 = Event.create(name: 'Ayowoki', description: 'The return', start_date: Date.new(2019,4,3), event_venue_id: ev2.id)
+e3 = Event.create(name: 'Foo Fighters', description: 'Wow', start_date: Date.new(2020,2,3), event_venue_id: ev3.id)
 
 tt1 = TicketType.create(event_id: e1.id, price: 10000, category: 'Cancha')
 tt2 = TicketType.create(event_id: e1.id, price: 20000, category: 'Andes')
@@ -32,37 +32,27 @@ tt7 = TicketType.create(event_id: e3.id, price: 15000, category: 'Cancha')
 tt8 = TicketType.create(event_id: e3.id, price: 25000, category: 'Andes')
 tt9 = TicketType.create(event_id: e3.id, price: 35000, category: 'Pacifico')
 
-to1 = TicketOrder.create(user_id: u1.id, ticket_type_id: tt5.id, total: tt5.price)
-#TicketOrder.find(1).ticket_type_id << TicketType.find(5).id
-#TicketOrder.find(1).ticket_type_º	id << TicketType.find(9).id
-aux1 = TicketType.find(5).price + TicketType.find(9).price + TicketType.find(1).price
-TicketOrder.update(1, total: aux1)
+
+to1 = TicketOrder.create(user_id: u1.id, ticket_type_id: tt4.id, total: 11000)
+to2 = TicketOrder.create(user_id: u1.id, ticket_type_id: tt1.id, total: 10000)
+to3 = TicketOrder.create(user_id: u1.id, ticket_type_id: tt7.id, total: 15000)
+
+to4 = TicketOrder.create(user_id: u2.id, ticket_type_id: tt2.id, total: 20000)
+to5 = TicketOrder.create(user_id: u2.id, ticket_type_id: tt5.id, total: 21000)
+to6 = TicketOrder.create(user_id: u2.id, ticket_type_id: tt8.id, total: 25000)
+
+to7 = TicketOrder.create(user_id: u3.id, ticket_type_id: tt3.id, total: 30000)
+to8 = TicketOrder.create(user_id: u3.id, ticket_type_id: tt6.id, total: 31000)
+to9 = TicketOrder.create(user_id: u3.id, ticket_type_id: tt9.id, total: 35000)
+
+to10 = TicketOrder.create(user_id: u4.id, ticket_type_id: tt1.id, total: 10000)
+to11 = TicketOrder.create(user_id: u4.id, ticket_type_id: tt5.id, total: 21000)
+to12 = TicketOrder.create(user_id: u4.id, ticket_type_id: tt9.id, total: 35000)
+
+to13 = TicketOrder.create(user_id: u5.id, ticket_type_id: tt3.id, total: 30000)
+to14 = TicketOrder.create(user_id: u5.id, ticket_type_id: tt4.id, total: 21000)
+to15 = TicketOrder.create(user_id: u5.id, ticket_type_id: tt8.id, total: 25000)
 
 
-to2 = TicketOrder.create(user_id: u2.id, ticket_type_id: tt6.id, total: tt6.price)
-#o2.ticket_type_id << tt2.id
-#to2.ticket_type_id << tt8.id
-aux2 = TicketType.find(6).price + TicketType.find(8).price + TicketType.find(2).price
-TicketOrder.update(2, total: aux2)
 
-
-to3 = TicketOrder.create(user_id: u3.id, ticket_type_id: tt4.id, total: tt4.price)
-#to3.ticket_type_id << tt3.id
-#to3.ticket_type_id << tt7.id
-aux3 = TicketType.find(4).price + TicketType.find(7).price + TicketType.find(3).price
-TicketOrder.update(3, total: aux3)
-
-
-to4 = TicketOrder.create(user_id: u4.id, ticket_type_id: tt6.id, total: tt6.price)
-#to4.ticket_type_id << tt2.id
-#to4.ticket_type_id << tt8.id
-aux4 = TicketType.find(6).price + TicketType.find(8).price + TicketType.find(2).price
-TicketOrder.update(4, total: aux4)
-
-
-to5 = TicketOrder.create(user_id: u5.id, ticket_type_id: tt5.id, total: tt5.price)
-#to5.ticket_type_id << tt3.id
-#to5.ticket_type_id << tt7.id
-aux5 = TicketType.find(5).price + TicketType.find(3).price + TicketType.find(7).price
-TicketOrder.update(5, total: aux5)
 
